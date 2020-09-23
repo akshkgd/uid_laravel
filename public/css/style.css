@@ -1,0 +1,19 @@
+.uid-car{
+    border-radius: 12px;
+}
+.avatar-hero{
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    text-align: center !important;
+}
+.text-2{
+    font-size: 1.1rem;
+}
+
+.rounded{
+    border-radius: 20px !important;
+}
+.display-8{
+    font-size: 46px;
+}
