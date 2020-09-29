@@ -1,147 +1,152 @@
-<!doctype html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-
-    <title>{{ config('app.name', 'Laravel') }}</title>
-
-    <!-- Scripts -->
-    <script src="{{ asset('js/vendor.js') }}"></script>
-    <script src="{{ asset('js/jk.js') }}"></script>
-
-    <!-- Fonts -->
-    <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
-
-    <!-- Styles -->
-    <link href="{{ asset('css/jk.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/style.css.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/vendor.css') }}" rel="stylesheet">
-
-    <style>
-        .header {
-            border-bottom: none;
-        }
-    </style>
-
-</head>
-
-<body>
-    <!-- header -->
-    <header class="header-sticky header-light" style="border-bottom:none;">
-        <div class="containe pl-1 pr-1">
-            <nav class="navbar navbar-expand-lg navbar-light">
-                <a class="navbar-brand" href="{{url('/')}}">
-                    <a class="navbar-logo navbar-logo-light" href="{{url('/')}}" alt="Logo"> <kbd>UID - Identification system</kbd> </a>
-                    <!-- <a class="navbar-logo navbar-logo-dark" href="{{url('/')}}" alt="Logo"> ID - Identification system </a> -->
-                </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="burger"><span></span></span></button>
-
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav align-items-center mr-auto text-center  ">
-                        <li class="nav-item">
-                            <a class="nav-link a-light" href="{{url('/about')}}" role="button" style="color:white">
-                                About Us
-                            </a>
-                        </li>
 
 
-                    </ul>
 
-                    <ul class="navbar-nav align-items-center mr-0">
-                        <li class="nav-item dropdow">
-                            @guest
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('login') }}" style="color:white">{{ __('Login') }}</a>
-                        </li>
-                        @if (Route::has('register'))
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('register') }}" style="color:white">{{ __('Register') }}</a>
-                        </li>
-                        @endif
-                        @else
-                        <li class="nav-item dropdown">
-                            <a id="navbarDropdown" class="nav-linkk dropdown-toggle btn btn-outline-primary" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre style="color:white">
-                                {{ Auth::user()->name }} <span class="caret"></span>
-                            </a>
+  @extends('layouts.new')
+  @section('content')
 
-                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                    {{ __('Logout') }}
-                                </a>
-
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                    @csrf
-                                </form>
-                            </div>
-                        </li>
-                        @endguest
-                        <!-- <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <a class="dropdown-item" href="../app/profile.html">Public Profile</a>
-                  <a class="dropdown-item" href="../app/connections.html">Connections</a>
-                  <a class="dropdown-item" href="../app/groups.html">Groups</a>
-                  <div class="dropdown-divider"></div>
-                  <a class="dropdown-item" href="../app/settings.html">Settings</a>
-                  <a class="dropdown-item" href="../app/payments.html">Payments</a>
-                </div> -->
-                        </li>
-                    </ul>
+<!------------------- Banner Section---------------->
+<section id="banner">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <p class="promo-title"> UNIQUE IDENTIFICATION SYSTEM</p>
+                        <P>We Loved To Protect Your Identity Behind Your Happiness</P>
+                        <p>Your Privacy Our Priority</p>
+                        <a class="btn btn-primary" href="getstarted.html">Get Started</a> 
+                        <a href="#"><h5><i class="fa fa-play-circle" aria-hidden="true">Watch Tutorials</a></h5></i></div>
+ 
+                    
+            
+                    <div class="col-md-6 text-center">
+                        
+                       <img src="images/smile.png.jpg" alt="" class="img-fluid">
+                   
+                      </div>
+                    </div>
                 </div>
-            </nav>
-        </div>
-    </header>
-<section class="p-0">
-      <div class="swiper-container swiper-container-half text-white"
-        data-top-top="transform: translateY(0px);" 
-        data-top-bottom="transform: translateY(250px);">
-        <div class="swiper-wrapper">
-          <div class="swiper-slide vh-100">
-            <div class="image image-overlay" style="background-image:url('/img/cover.jpeg')"></div>
-            <div class="caption">
-              <div class="container">
-                <div class="row justify-content-center vh-100">
-                  <div class="col-md-8 align-self-center text-center">
-                  <form method="POST" action="{{ route('search') }}">
+                
+                 <!------- <img src="images/wave 1.png" alt="" class="img-fluid">------>
+               
+            
+            
+        </section>
+        
+        <!------------------------SEARCH YOUR  UNIQUE IDENTITY-------------------------------------------------------->
+        <section id="services">
+          <div class="container text-center">
+            <h1 class="title">FIND YOUR UNIQUE IDENTITY</h1>
+            <div class="main">
+  
+             
+              
+              <!-- Another variation with a button -->
+              <form method="POST" action="{{ route('search') }}">
               @csrf
-
-              <div class="input-group mb-3">
-
-                <input type="text" name="search_value" class="form-control shado" id="typed4" aria-label="Recipient's username" aria-describedby="basic-addon2">
+              <div class="input-group">
+                <input type="text" class="form-control" name="search_value" placeholder="Find Your Identity">
                 <div class="input-group-append">
-
-                  <!-- <button class="btn" type="submit"><a href="" class="icon-search fs-20 text-dark"></a>d </button> -->
-                  <button class="btn " type="submit"> <i class="icon-search fs-20 text-dark"></i> </button>
+                  <button class="btn btn-secondary"style="background-color:#a517ba" type="submit">
+                    <i class="fa fa-search"></i>
+                  </button>
                 </div>
               </div>
-            </form>
-                    <h1 data-swiper-parallax="-100%" class="displa">An <b>Unique Identity</b> that keeps you safe.</h1>
-                    <a href="{{url('register')}}" class="btn btn-white px-5">Get Started</a>
+              </form>
+              
+                   
+            
+          </section>
+        <!---------Service Section--------->
+        
+        <section id="services">
+            <div class="container text-center">
+              <h1 class="title">WHAT WE DO?</h1>
+                <div class="row text-center">
+                    <div class="col-md-4 services">
+                      <img src="" alt="" class="service-img">
+                      <h4>GLOBAL IDENTITY</h4>
+                      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore nam quidem, natus, reprehenderit quas deleniti consequuntur rerum quibusdam iure sequi harum impedit laborum vero temporibus ducimus debitis voluptatum ipsum sit?</p>
+                    </div>
+                    <div class="col-md-4 services">
+                      <img src="" alt="" class="service-img">
+                      <h4>GLOBAL IDENTITY</h4>
+                      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore nam quidem, natus, reprehenderit quas deleniti consequuntur rerum quibusdam iure sequi harum impedit laborum vero temporibus ducimus debitis voluptatum ipsum sit?</p>
+                    </div>
+                    <div class="col-md-4 services">
+                      <img src="" alt="" class="service-img">
+                      <h4>GLOBAL IDENTITY</h4>
+                      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore nam quidem, natus, reprehenderit quas deleniti consequuntur rerum quibusdam iure sequi harum impedit laborum vero temporibus ducimus debitis voluptatum ipsum sit?</p>
+                    </div>
+                    </div><button type="button"class="btn btn-primary">All Services</button>
+                </div>
+                
+            </div>
+        </section>
+
+        <!-----------------------------------ABOUT US -SECTION----------------------------------------->
+            <section id="about-us">
+              <div class="container text-center">
+                <h1 class="title">WHY CHOOSE US?</h1>
+                <div class="row">
+                  <div class="col-md-6 about-us">
+                    <p class="about-title">Why We Are Different</p>
+                    <ul>
+                      <li>We loved to Protect Your Identity Behind your Happiness.</li>
+                      <li>We loved to Protect Your Identity Behind your Happiness.</li>
+                      <li>We loved to Protect Your Identity Behind your Happiness.</li>
+                      <li>We loved to Protect Your Identity Behind your Happiness.</li>
+                      <li>We loved to Protect Your Identity Behind your Happiness.</li>
+                      <li>We loved to Protect Your Identity Behind your Happiness.</li>
+                      <li>We loved to Protect Your Identity Behind your Happiness.</li>
+                      
+
+                      
+                    </ul>
+                  </div>
+                  <div class="col-md-6">
+                    <img src="images/n2.png" alt="" class="img-fluid ">
                   </div>
                 </div>
-              </div>
-            </div>
-          </div>
-          <div class="swiper-footer">
-            <div class="container-fluid">
-              <div class="row">
-                <div class="col text-center">
-                  <div class="mouse"></div>
+                </div>
+            </section>
+
+            <!----------------TESTIMONIALS-------------------------------------->
+            <section id="testimonials">
+              <div class="container">
+                <h1 class="title text-center">WHAT CLIENTS SAY</h1>
+                <div class="row">
+                  <div class="col-md-4 testimonials">
+                         <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Illo aliquid ipsam beatae facilis fugit soluta dolorum expedita illum vel recusandae quod nostrum quam dolorem consectetur, molestiae pariatur corrupti dignissimos nobis.</p>
+                         <img src="images/Shivam.JPG" alt=""class="img-fluid">
+                         <p class="user-detail"><b>SHIVAM SRIVASTAVA<br>MANAGEMENT HEAD at Codekar</b></p>
+                  </div>
+                  <div class="col-md-4 testimonials">
+                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Illo aliquid ipsam beatae facilis fugit soluta dolorum expedita illum vel recusandae quod nostrum quam dolorem consectetur, molestiae pariatur corrupti dignissimos nobis.</p>
+                    <img src="images/Shivam.JPG" alt=""class="img-fluid">
+                    <p class="user-detail"><b>ASHISH SHUKLA <br>CEO at Codekar</b></p>
+             </div>
+             <div class="col-md-4 testimonials">
+              <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Illo aliquid ipsam beatae facilis fugit soluta dolorum expedita illum vel recusandae quod nostrum quam dolorem consectetur, molestiae pariatur corrupti dignissimos nobis.</p>
+              <img src="images/Shivam.JPG" alt=""class="img-fluid">
+              <p class="user-detail"><b>ASHUTOSH SINGH<br>DEVELOPER at Codekar</b></p>
+       </div>
                 </div>
               </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    <!-- / cover -->
+            </section>
 
+            <!------------------social Media Section----------------------->
+            <section id="social-media">
+              <div class="container text-center">
+                <p class="title text-center">FIND US ON SOCIAL MEDIA</p>
+                <div class="social-icons">
+                  <a href="mailto:shivamdlegaladvisor@gmail.com"> <i class="fas fa-envelope-square"style="font-size:80px"></i></a>
+      <a href="https://www.facebook.com/don.shivamsri.2901/"> <i class="fab fa-facebook-f"style="font-size:80px"></i></a>
+                
+                  <a href=""> <i class="fab fa-whatsapp"style="font-size:80px"></i></a>
+       <a href="#"><i class="fab fa-instagram"style="font-size:80px"></i></a>
+      <a href="#"> <i class="fab fa-twitter"style="font-size:80px" ></i></a>
+      
+       </div>
+              </div>
+            </section>
 
-
-
-  
+  @endsection

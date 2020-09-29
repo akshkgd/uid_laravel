@@ -28,8 +28,9 @@ class HomeController extends Controller
     public function index()
     {
         if(Auth::User()->role == 1){
-            $users = User::all();
-            return view('admin.dashboard', compact('users'));
+            $approvedUsers = User::where('is_verified', 1)->get();
+            $users = User::where('is_verified', 0)->get();
+            return view('admin.dashboard', compact('users', 'approvedUsers'));
         }
         else{
             $documents = document::where('user_id', Auth::user()->id)->get();

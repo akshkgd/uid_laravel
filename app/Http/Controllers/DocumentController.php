@@ -42,7 +42,7 @@ class DocumentController extends Controller
         $a->document = $path;
         $a->user_id = $request->user_id;
         $a->save();
-        return redirect()->back();
+        return redirect('/home');
     }
 
     /**

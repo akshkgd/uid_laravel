@@ -69,7 +69,7 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'mobile' => $data['mobile'],
             'password' => Hash::make($data['password']),
-            'uniqueid' => uniqid(),
+            'uniqueid' => rand(100000000000, 999999999999),
         ]);
     }
 }

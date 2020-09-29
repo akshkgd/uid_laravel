@@ -116,11 +116,11 @@ class ProfileController extends Controller
         return redirect('/home');
         
     }
-    public function update1(Request $request, $id)
+    public function approve( $id)
     {
         $a = User::find($id);
-        $data['is_approved'] = 1;
-        $a->update($data);
+        $a->is_verified = 1;
+        $a->save();
         //        return view('listings.listings');
 
        return redirect('/home');
