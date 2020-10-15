@@ -103,7 +103,7 @@ class ProfileController extends Controller
     public function update(Request $request, $id)
     {
         $validator = Validator::make($request->all(), [
-           'name'=>'required',
+           'name'=>'alpha',
            'mobile'=>'digits:10 && numeric',
            'aadhar'=>'digits:12 && numeric' 
             
