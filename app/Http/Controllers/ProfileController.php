@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\document;
 use App\User;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 
 class ProfileController extends Controller
@@ -101,6 +102,17 @@ class ProfileController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $validator = Validator::make($request->all(), [
+           'name'=>'required',
+           'mobile'=>'digits:10 && numeric',
+           'aadhar'=>'digits:12 && numeric' 
+            
+            
+        ]);
+        if ($validator->fails()) {
+            Session()->flash('alert-danger', $validator->messages()->first());
+            return redirect()->back()->withInput();
+       }
         $a = User::findorFail($id);
         $a->name = $request->name;
         $a->email = $request->email;
